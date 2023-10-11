@@ -8,7 +8,7 @@ const MainLayout = (props) => {
       <Header />
       <main>
         {props.children}
-      </main>
+      </main>  
     </>
   )
 }
