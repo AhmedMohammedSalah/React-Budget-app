@@ -1,13 +1,13 @@
 import React from 'react'
 import MainLayout from 'layout/MainLayout'
 import Hero from 'components/budget/Hero/Hero'
-import { Tab} from 'components/ui'
-
+import BuddgetContent from 'components/budget/BuddgetContent/BuddgetContent'
 const BudgetPage = () => {
   return (
     <MainLayout>
-      <Hero>      </Hero>
-      <Tab></Tab>
+      <Hero />      
+      <BuddgetContent></BuddgetContent>
+      
     </MainLayout>
   )
 }

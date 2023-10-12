@@ -1,10 +1,22 @@
 import React from 'react'
-import { Tab } from 'components/ui'
+import { Tabs, Tab } from 'components/ui'
+import Transactions from 'components/budget/BuddgetContent/Transactions/Transactions'
 
 const BuddgetContent = () => {
     return (
         <div>
-            <Tab></Tab>
+            <Tabs>
+                <Tab title='Data'>
+                    <Transactions/>
+                </Tab>
+                <Tab title='Income'>
+                    content Income
+                </Tab>
+                <Tab title='Expanses'>
+                    content Expanses
+                </Tab>
+
+            </Tabs>
         </div>
     )
 
