@@ -6,6 +6,7 @@ import { Button ,Modal } from 'components/ui'
 const Header = () => {
   const isMount = useRef( false );
     const [scrolled, setScrolled] = useState( false );
+    const [modal, setModal] = useState( false );
   useEffect( () => {
     if ( !isMount.current ) {
                 
@@ -33,13 +34,13 @@ const Header = () => {
           <h1>Buddget App</h1>
           {/* Actions */}
           <div className='header_actions'>
-            <div className='header_action_add'>
+            <div className='header_action_add' onClick={()=>{setModal(true)}}>
               <Button>+</Button>
             </div>
           </div>
         </div>
       </div>
-      <Modal visible={true}>
+      <Modal visible={modal} closeModal={()=>{setModal(false)}}>
         <div>
           content
         </div>

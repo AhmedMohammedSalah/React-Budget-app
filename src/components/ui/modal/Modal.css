@@ -1,0 +1,21 @@
+.modal-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+.modal-overlay .modal {
+    background: var(--gradient-bg-light);
+    border-radius: 4px;
+    box-shadow:3px 3px 20px rgba(0, 0, 0, 0.1) ;
+    max-width: 600px;
+    width: 90vw;
+}
