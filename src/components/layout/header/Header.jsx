@@ -1,7 +1,8 @@
 import React,{useEffect ,useRef,useState} from 'react'
 import './header.css'
 import headerLogo from 'assets/images/logo.png'
-import { Button } from 'components/ui'
+import { Button ,Modal } from 'components/ui'
+
 const Header = () => {
   const isMount = useRef( false );
     const [scrolled, setScrolled] = useState( false );
@@ -38,6 +39,11 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <Modal visible={true}>
+        <div>
+          content
+        </div>
+      </Modal>
     </header>
     
   )
