@@ -7,4 +7,8 @@ export const deleteTransactions = async(id) => {
     const { data } =await  axiosApi.delete( '/transactions/'+ id );
     return data;
 }
+export const postTransactions = async ( body ) => {
+    const { data } =await  axiosApi.post( '/transactions/',body );
+    return data;
+}
 

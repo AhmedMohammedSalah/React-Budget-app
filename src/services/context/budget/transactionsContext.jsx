@@ -1,6 +1,5 @@
 import React, { createContext, useReducer, useEffect } from "react";
-import { useRef } from "react";
-import { useCallback } from "react";
+import { useCallback ,useRef} from "react";
 import { getTransactions,deleteTransactions } from "services/apis/transactions.api";
 
 export const transactionsContext = createContext();
@@ -61,7 +60,7 @@ export const TransactionsProvider = ( { children } ) => {
     }, [isMount,fetchData] ); // Run once when the component mounts
 
     return (
-        <transactionsContext.Provider value={{...state,handleDelete}}>
+        <transactionsContext.Provider value={{...state,handleDelete,fetchData}}>
             {children} 
         </transactionsContext.Provider>
     );

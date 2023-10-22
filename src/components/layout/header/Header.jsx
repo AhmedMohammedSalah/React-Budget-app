@@ -2,6 +2,7 @@ import React,{useEffect ,useRef,useState} from 'react'
 import './header.css'
 import headerLogo from 'assets/images/logo.png'
 import { Button ,Modal } from 'components/ui'
+import BudgetForm from 'components/budget/BudgetForm/BudgetForm'
 
 const Header = () => {
   const isMount = useRef( false );
@@ -42,7 +43,7 @@ const Header = () => {
       </div>
       <Modal visible={modal} closeModal={()=>{setModal(false)}}>
         <div>
-          content
+          <BudgetForm closeModal={()=>{setModal(false)}}/>
         </div>
       </Modal>
     </header>

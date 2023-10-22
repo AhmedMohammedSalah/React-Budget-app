@@ -1,11 +1,11 @@
 import React from 'react'
 import './Transactions.css'
-import TranceHeader from './shared/TranceHeader'
+import TranseHeader from './shared/TranceHeader'
 import TransContent from './shared/TransContent'
 const Transactions = () => {
     return (
         <div className='trans'>
-            <TranceHeader></TranceHeader>
+            <TranseHeader></TranseHeader>
             <TransContent></TransContent>
         </div>
     )

@@ -4,7 +4,7 @@ import Transactions from 'components/budget/BuddgetContent/Transactions/Transact
 
 const BuddgetContent = () => {
     return (
-        <div>
+        <div class="container">
             <Tabs>
                 <Tab title='Data'>
                     <Transactions/>
