@@ -1,38 +1,6 @@
 {
   "transactions": [
     {
-      "id": 3,
-      "title": "Project x",
-      "amount": 900,
-      "type": "income",
-      "category": "2",
-      "date": "2022-01-22"
-    },
-    {
-      "id": 4,
-      "title": "Rent",
-      "amount": 1000,
-      "type": "income",
-      "category": "3",
-      "date": "2021-10-13"
-    },
-    {
-      "title": "test 2",
-      "amount": "40000",
-      "type": "income",
-      "category": "5",
-      "date": "2022-10-18",
-      "id": 7
-    },
-    {
-      "title": "dddddd",
-      "amount": "3333",
-      "type": "income",
-      "category": "2",
-      "date": "2022-10-21",
-      "id": 8
-    },
-    {
       "title": "monthly save",
       "amount": "1111",
       "type": "expanse",
@@ -63,6 +31,22 @@
       "category": "1",
       "date": "2023-01-01",
       "id": 12
+    },
+    {
+      "title": "شاةث",
+      "amount": "2",
+      "type": "income",
+      "category": "1",
+      "date": "2023-01-01",
+      "id": 13
+    },
+    {
+      "title": "as",
+      "amount": "4000",
+      "type": "income",
+      "category": "3",
+      "date": "2023-10-04",
+      "id": 14
     }
   ],
   "categories": [

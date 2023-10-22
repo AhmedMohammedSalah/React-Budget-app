@@ -11,4 +11,8 @@ export const postTransactions = async ( body ) => {
     const { data } =await  axiosApi.post( '/transactions/',body );
     return data;
 }
+export const updateTransactions = async ( id,body ) => {
+    const { data } =await  axiosApi.put( '/transactions/'+id,body );
+    return data;
+}
 

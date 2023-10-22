@@ -1,23 +1,27 @@
 import { Button } from "components/ui"
-import React, { useContext, useState ,useCallback} from 'react'
+import React, { useContext, useState ,useCallback, useEffect} from 'react'
 import './BudgetForm.css'
 import { categoriesContext } from "services/context/budget/categoriesContext"
 import { postTransactions } from "services/apis/transactions.api"
 import { transactionsContext } from "../../../services/context/budget/transactionsContext"
+import { updateTransactions } from "../../../services/apis/transactions.api"
         // "title": "test",
         // "amount": "500",
         // "type": "income",
         // "category": "7",
         // "date": "2022-10-21",
         // "id": 11
-const initialData = {
-        title: "",
-        amount: "",
-        type: "income",
-        category: "",
-        date: ""
+let initialData = {
+  title: "",
+  amount: "",
+  type: "income",
+  category: "",
+  date: ""
 }
-const BudgetForm = ({closeModal}) => {
+const BudgetForm = ({closeModal,defaultData}) => {
+  if ( defaultData ) {
+    initialData = { ...defaultData }
+  };
   const [data, setData] = useState( initialData );
   const [validation, setValidation] = useState( {
     isValid: false,
@@ -46,9 +50,9 @@ const BudgetForm = ({closeModal}) => {
     vdata.touched = true
 
     const stateData = { ...data }
-    // if (stateData.id) {
-    //   delete stateData.id
-    // }
+    if (stateData.id) {
+      delete stateData.id
+    }
 
 
     Object.keys(stateData).forEach(key => {
@@ -99,7 +103,11 @@ const BudgetForm = ({closeModal}) => {
     e.preventDefault();
     setLoading( true );
     try {
-      await postTransactions( data );
+      if ( defaultData ) {
+        await updateTransactions(defaultData.id,data)
+      } else {
+        await postTransactions( data );
+      }
       setLoading( false );
       fetchData()
       closeModal();
@@ -112,9 +120,25 @@ const BudgetForm = ({closeModal}) => {
 
 
   }
+  useEffect( () => {
+    if ( !defaultData ) {
+      setData(
+        {
+          title: "",
+          amount: "",
+          type: "income",
+          category: "",
+          date: ""
+        }
+      )
+    }
+  },
+    [defaultData]
+  )
+  
   return (
     <div className="new-budget">
-      <h2> Add new Budget</h2>
+      <h2> {defaultData?`edit ${defaultData.title }`:'Add new  '} Budget</h2>
 
       <form className="form" onSubmit={handleSubmit }>
 
@@ -215,6 +239,7 @@ const BudgetForm = ({closeModal}) => {
                       className={`${validation.data.date?.error && "error"}`}
 
             placeholder='date...'
+            value={data.date}
                       onChange={handleChange}
             onBlur={handleBlur}
 />
@@ -224,8 +249,8 @@ const BudgetForm = ({closeModal}) => {
           )}
         </div>
 
-          <Button size='large' block disabled={!validation.isValid ||loading} >
-          Save
+        <Button size='large' block disabled={!validation.isValid ||loading} >
+          {defaultData?`edit ${data.title }`:'Save '}
         </Button>
         {errorMsg && (
           <p color="red">{errorMsg}</p>

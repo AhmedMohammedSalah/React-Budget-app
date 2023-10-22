@@ -7,7 +7,7 @@ const TransContent = () => {
     // axiosApi.get( '/transactions' ).then( res => {
     //     console.log(res)
     // })
-    const { data:transactions ,loading ,error } = useContext( transactionsContext )
+    const { filteredData:transactions ,loading ,error } = useContext( transactionsContext )
     const { data: categories ,loading:catLoading  } = useContext(categoriesContext )
     return (
         <div className='trans_content'>

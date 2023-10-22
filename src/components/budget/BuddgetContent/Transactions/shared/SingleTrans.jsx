@@ -1,9 +1,12 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo,useState } from 'react'
 import { CurrencyDollar,PencilLine,Trash } from 'phosphor-react'
 import { Button } from 'components/ui'
 import { transactionsContext } from 'services/context/budget/transactionsContext'
+import { Modal } from 'components/ui'
+import BudgetForm from 'components/budget/BudgetForm/BudgetForm'
 
-const SingleTrans = ({transaction ,categories}) => {
+const SingleTrans = ( { transaction, categories } ) => {
+    const [showModal, setShowModal] = useState( false );
     const { handleDelete } = useContext( transactionsContext )
     const currentCat = useMemo(() => {
         // eslint-disable-next-line eqeqeq
@@ -27,9 +30,12 @@ const SingleTrans = ({transaction ,categories}) => {
                 <small>{currentCat}</small>
             </div>
             <div className="trans_item-cta">
-                <Button icon> <PencilLine/></Button>
+                <Button icon onClick={() => { setShowModal( true ) }}> <PencilLine/></Button>
                 <Button icon type={'error'} onClick={() => {handleDelete(transaction.id)}}><Trash/></Button>
             </div>
+            <Modal visible={showModal} closeModal={()=>{setShowModal(false)}}>
+                <BudgetForm closeModal={() => { setShowModal( false ) }} defaultData={ transaction} />
+            </Modal>
         </div>
     )
 }
